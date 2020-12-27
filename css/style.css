@@ -78,11 +78,36 @@ li {
 }
 
 .main-nav .link {
+  position: relative;
+  padding-bottom: 32px;
+  padding-top: 32px;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--secondary-text-color);
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-nav .link.current::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--active-color);
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-nav .link.current:hover::after {
+  transform: scaleX(0.5);
 }
 
 .main-nav .link:hover,
@@ -115,6 +140,8 @@ li {
   color: var(--primary-text-color);
   display: flex;
   margin-left: auto;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-contacts .link:hover,
@@ -127,7 +154,7 @@ li {
   margin-right: 10px;
   fill: currentColor;
   width: 16px;
-  height: 12px;
+  height: 16px;
 }
 
 .icon-smartphone {
@@ -184,7 +211,7 @@ h3 {
 .hero-button {
   color: var(--color-white);
   background-color: var(--active-color);
-  display: block;
+  display: inline-block;
   align-items: center;
   margin-left: 700px;
   margin-right: 700px;
@@ -196,6 +223,54 @@ h3 {
   min-width: 200px;
   height: 50px;
   padding: 10px 32px;
+}
+
+.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  min-height: 581px;
+  min-width: 528px;
+  background-color: var(--color-white);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal .close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .section {
@@ -264,7 +339,8 @@ h3 {
   padding: 0px;
 }
 
-.about-us {
+.about-us,
+.team-title {
   font-size: 36px;
   line-height: 1.17;
   text-align: center;
@@ -274,16 +350,40 @@ h3 {
 .images {
   display: flex;
   justify-content: space-between;
-  margin-right: 30px;
-}
-
-.images:last-child {
-  margin-right: 0px;
 }
 
 .block {
   margin-bottom: 94px;
 }
+
+.thumb {
+  position: relative;
+}
+
+.link-image {
+  display: block;
+  height: auto;
+}
+
+.thumb > .label {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 370px;
+  /* height: 70px; */
+  margin: 0;
+  padding: 27px 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  color: var(--color-white);
+  background-color: rgba(47, 48, 58, 0.8);
+}
+
+/* block team  */
 
 .our-team {
   padding-top: 94px;
@@ -292,13 +392,6 @@ h3 {
   padding-bottom: 94px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.team-title {
-  font-size: 36px;
-  line-height: 1.17;
-  text-align: center;
-  margin-bottom: 50px;
 }
 
 .team-list {

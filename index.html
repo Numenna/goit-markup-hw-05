@@ -36,7 +36,7 @@
         <!-- Hero-->
         <section class="hero overlay">
             <h1 class="hero-title">Эффективные решения для вашего бизнеса</h1>
-            <input class="hero-button" type="button" value="Заказать услугу">
+            <button class="hero-button" type="button" data-modal-open>Заказать услугу</button>
             <!--<a href="" class="hero-link">Заказать услугу</a>-->
         </section>
     <Main>
@@ -67,15 +67,24 @@
             <div class="block">
                 <h2 class="about-us">Чем мы занимаемся</h2>
                 <ul class="images">
-                    <img src="./images/box 1.jpg" alt="photo 1" width="370">
-                    <img src="./images/box 2.jpg" alt="photo 2" width="370">
-                    <img src="./images/box 3.jpg" alt="photo 3" width="370">
+                    <li class="thumb">
+                    <img class="link-image" src="./images/box 1.jpg" alt="photo 1" width="370">
+                    <p class="label">Десктопные приложения</p>
+                    </li>
+                    <li class="thumb">
+                    <img class="link-image" src="./images/box 2.jpg" alt="photo 2" width="370">
+                    <p class="label">Мобильные приложения</p>
+                    </li>
+                    <li class="thumb">
+                    <img class="link-image" src="./images/box 3.jpg" alt="photo 3" width="370">
+                    <p class="label">Дизайнерские решения</p>
+                    </li>
                 </ul>
             </div>
         </section>
         <!-- block team -->
-        <section>
-            <div class="our-team">
+        <section class="our-team">
+            <div class="section">
                 <h2 class="team-title">Наша команда</h2>
                 <ul class="team-list">
                     <li class="team-members-card">
@@ -312,5 +321,12 @@
             </div>
         </div>
     </Footer>
+    
+    <div class="backdrop is-hidden" data-modal>
+        <div class="modal">
+            <button class="close-btn" data-modal-close>&#10006</button>
+        </div>
+    </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>
