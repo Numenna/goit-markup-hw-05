@@ -722,7 +722,7 @@ h3 {
   letter-spacing: 0.06em;
   color: var(--primary-text-color);
 }
-.products .products-item {
+.products .product-item {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.87;
